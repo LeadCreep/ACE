@@ -2195,8 +2195,10 @@ public final class Problem extends ProblemIMP implements ObserverOnConstruction 
 
 		if (scp.length <= 4 && scp[0] instanceof VariableInteger) { // TODO: increase the limit?
 			Set<Integer> sv = Variable.setOfvaluesIn(scp);
-			if (sv.size() == scp.length)
-				return extension((Var[]) scp, Kit.allPermutations(sv.stream().mapToInt(v -> v).sorted().toArray()), true);
+			if (sv.size() == scp.length) {
+				int[][] permutations = Kit.allPermutations(sv.stream().mapToInt(v -> v).sorted().toArray());
+				return extension((Var[]) scp, Stream.of(permutations).filter(t -> Variable.isValidTuple(scp, t, false)).toArray(int[][]::new), true);
+			}
 		}
 
 		if (head.control.global.gatherAllDifferent) {

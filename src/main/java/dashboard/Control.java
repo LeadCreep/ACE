@@ -185,6 +185,9 @@ public final class Control {
 		control(learning.nogood == LearningNogood.NO || learning.nogood == LearningNogood.RST, "other values currently not available");
 		control(optimization.lb <= optimization.ub);
 		controlKeys();
+		if (metarestart.metaRestartLength > 0 || metarestart.metaRestartThreads > 1)
+			control(metarestart.metaRestartSeedStop > metarestart.metaRestartSeedStart,
+					() -> "The meta-restart seed range must contain at least one seed");
 		if (general.exceptionsVisible)
 			org.xcsp.modeler.Compiler.ev = true;
 		if (general.noPrintColors)

@@ -411,8 +411,11 @@ public final class Statistics implements ObserverOnSolving, ObserverOnRuns, Obse
 	}
 
 	public void clearVarAssignments() {
+		if (varAssignments == null)
+			return;
 		for (VarAssignments va : varAssignments)
-			va.clear();
+			if (va != null)
+				va.clear();
 	}
 
 	public long safeNumber() {

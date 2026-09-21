@@ -912,8 +912,7 @@ public class Solver implements ObserverOnBacktracksSystematic {
 		propagation.clear();
 		propagation.nTuplesRemoved = 0;
 		nRecursiveRuns = 0;
-		// restarter.reset();
-		restarter = new Restarter(this);
+		restarter.reset(); // restarter = new Restarter(this);
 		resetNoSolutions();
 		control(decisions.set.isEmpty()); // otherwise decisions.set.clear();
 		heuristic.setPriorityVars(problem.priorityVars, 0);

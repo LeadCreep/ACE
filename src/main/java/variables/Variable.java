@@ -287,7 +287,7 @@ public abstract class Variable implements ObserveronBacktracksUnsystematic, Comp
 	 * @param tuple
 	 *            a tuple of values of value indexes
 	 * @param indexes
-	 *            indicates if the tuple contains values (when true) or value indexes
+	 *            indicates if the tuple contains values (when false) or value indexes
 	 * @return true if the specified tuple is valid with respect to the specified array of variables
 	 */
 	public static boolean isValidTuple(Variable[] vars, int[] tuple, boolean indexes) {
